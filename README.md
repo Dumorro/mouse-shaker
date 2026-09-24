@@ -127,6 +127,3 @@ Mouse Shaker makes no network connections and collects no data. Its settings sta
 
 [MIT](LICENSE) © 2026 Thiago Dumorro
 
-## Disclaimer
-
-Mouse Shaker is inspired by Mouse Jiggler for Mac, but it is an independent project and is not affiliated with it. Use it responsibly and in line with your organization's policies.
