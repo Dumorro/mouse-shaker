@@ -11,7 +11,10 @@ ifneq (,$(findstring CommandLineTools,$(DEVELOPER_DIR)))
                 -Xlinker -rpath -Xlinker $(CLT_FW) -Xlinker -rpath -Xlinker $(CLT_LIB)
 endif
 
-.PHONY: build test app run install reset-perms logs clean
+VERSION := $(shell /usr/libexec/PlistBuddy -c 'Print CFBundleShortVersionString' Resources/Info.plist)
+ZIP := build/MouseShaker-$(VERSION).zip
+
+.PHONY: build test app release run install reset-perms logs clean
 
 build:
 	swift build
@@ -21,6 +24,13 @@ test:
 
 app:
 	./scripts/build-app.sh
+
+# Universal (Apple silicon + Intel) app, zipped with ditto so the bundle and its signature survive.
+release:
+	ARCHS="arm64 x86_64" ./scripts/build-app.sh
+	rm -f "$(ZIP)"
+	ditto -c -k --sequesterRsrc --keepParent "$(APP)" "$(ZIP)"
+	shasum -a 256 "$(ZIP)"
 
 run: app
 	-pkill -x MouseShaker

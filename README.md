@@ -47,7 +47,19 @@ Built with Swift and SwiftUI. It needs no Xcode project, only the Command Line T
   <img src="docs/images/schedule.png" width="420" alt="Settings, Schedule tab">
 </p>
 
-## Requirements
+## Install
+
+1. Download `MouseShaker-<version>.zip` from [Releases](https://github.com/Dumorro/mouse-shaker/releases/latest). It is a universal app for Apple silicon and Intel Macs running macOS 13 or later.
+2. Unzip it and move **Mouse Shaker.app** to `/Applications`.
+3. The build is ad-hoc signed and not notarized by Apple, so Gatekeeper blocks it the first time you open it. Either:
+   - try to open it once, then click **Open Anyway** in System Settings › Privacy & Security; or
+   - if macOS reports the app as damaged, clear the download quarantine flag:
+     ```sh
+     xattr -dr com.apple.quarantine "/Applications/Mouse Shaker.app"
+     ```
+4. Grant Accessibility access when asked (see [below](#accessibility-permission)).
+
+## Requirements for building
 
 - macOS 13 Ventura or later.
 - Swift 6 toolchain: the Xcode Command Line Tools (`xcode-select --install`) are enough.
@@ -58,6 +70,7 @@ Built with Swift and SwiftUI. It needs no Xcode project, only the Command Line T
 make app       # builds "build/Mouse Shaker.app" (ad-hoc signed)
 make run       # builds and opens the app
 make install   # copies the app to /Applications and opens it
+make release   # universal (arm64 + x86_64) app, zipped into build/MouseShaker-<version>.zip
 ```
 
 To sign with a real identity instead of ad-hoc:
