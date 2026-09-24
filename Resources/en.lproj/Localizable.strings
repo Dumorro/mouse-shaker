@@ -1,0 +1,3 @@
+/* English is the development language: keys are the English text, so no entries are needed.
+   This file exists so English counts as a supported localization when the bundle picks a
+   language (otherwise an English-only system would fall back to pt-BR). */

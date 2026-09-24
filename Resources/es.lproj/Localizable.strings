@@ -1,0 +1,127 @@
+/* Status */
+"Off" = "Desactivado";
+"Waiting for idle · %@" = "Esperando inactividad · %@";
+"Active · next in %@" = "Activo · siguiente en %@";
+"Paused: needs Accessibility access" = "En pausa: necesita acceso de Accesibilidad";
+"Paused: another user is active" = "En pausa: otro usuario está activo";
+"Paused: screen locked" = "En pausa: pantalla bloqueada";
+"Paused: outside schedule" = "En pausa: fuera del horario";
+"Paused: app condition not met" = "En pausa: no se cumple la condición de app";
+"Paused: menu or screenshot open" = "En pausa: menú o captura de pantalla abierta";
+"Turned off by timer" = "Desactivado por el temporizador";
+"Turned off: battery at %@" = "Desactivado: batería al %@";
+"Turns off at %@ · in %@" = "Se desactiva a las %@ · en %@";
+
+/* Modes and options */
+"Natural" = "Natural";
+"Silent" = "Silencioso";
+"Moves the pointer a few points along a curved path and back." = "Mueve el puntero unos puntos por una trayectoria curva y vuelve.";
+"Keeps your Mac active without visibly moving the pointer." = "Mantiene tu Mac activo sin mover el puntero de forma visible.";
+"Vertical" = "Vertical";
+"Horizontal" = "Horizontal";
+"Both" = "Ambos";
+"Always" = "Siempre";
+"Only while the app is running" = "Solo mientras la app esté abierta";
+"Only while the app is in front" = "Solo con la app en primer plano";
+"Only while the app isn't in front" = "Solo con la app fuera del primer plano";
+"None" = "Ninguno";
+"Never" = "Nunca";
+
+/* Menu */
+"Mouse Shaker" = "Mouse Shaker";
+"Active" = "Activo";
+"Mode" = "Modo";
+"Idle delay" = "Espera de inactividad";
+"Move every" = "Mover cada";
+"Settings…" = "Ajustes…";
+"Quit Mouse Shaker" = "Salir de Mouse Shaker";
+"Accessibility access needed" = "Se necesita acceso de Accesibilidad";
+"Mouse Shaker needs it to move the pointer." = "Mouse Shaker lo necesita para mover el puntero.";
+"Grant Access…" = "Conceder acceso…";
+"Cancel" = "Cancelar";
+"Turn off in" = "Desactivar en";
+"or at" = "o a las";
+"Turn off at" = "Desactivar a las";
+"Set" = "Fijar";
+
+/* Settings: tabs */
+"Mouse Shaker Settings" = "Ajustes de Mouse Shaker";
+"General" = "General";
+"Movement" = "Movimiento";
+"Schedule" = "Horario";
+"Conditions" = "Condiciones";
+"Shortcut" = "Atajo";
+
+/* Settings: General */
+"Launch at login" = "Abrir al iniciar sesión";
+"Approve Mouse Shaker in System Settings › General › Login Items." = "Aprueba Mouse Shaker en Ajustes del Sistema › General › Ítems de inicio.";
+"Prevent sleep while active" = "Evitar el reposo mientras está activo";
+"Keeps the display and system awake while Mouse Shaker is on and not paused." = "Mantiene la pantalla y el sistema despiertos mientras Mouse Shaker está activado y no en pausa.";
+"Always turn off after" = "Desactivar siempre después de";
+"Menu bar icon" = "Icono de la barra de menús";
+"Style" = "Estilo";
+"Cursor" = "Cursor";
+"Mouse" = "Ratón";
+"Coffee cup" = "Taza de café";
+"Bolt" = "Rayo";
+"Eye" = "Ojo";
+"Permissions" = "Permisos";
+"Granted" = "Concedido";
+"Accessibility" = "Accesibilidad";
+"Needed to move the pointer and send input events." = "Necesario para mover el puntero y enviar eventos de entrada.";
+"If access shows as granted but nothing moves, remove Mouse Shaker from the list and add it again." = "Si el acceso aparece como concedido pero nada se mueve, quita Mouse Shaker de la lista y vuelve a añadirlo.";
+"Open Privacy & Security…" = "Abrir Privacidad y seguridad…";
+
+/* Settings: Movement */
+"Timing" = "Tiempos";
+"How long to wait after your last input before starting." = "Cuánto esperar tras tu última interacción antes de empezar.";
+"Continuous movement" = "Movimiento continuo";
+"Acts every second, with no pause between movements." = "Actúa cada segundo, sin pausa entre movimientos.";
+"Natural motion" = "Movimiento natural";
+"Distance" = "Distancia";
+"Reduce Motion is on, so movement is limited to 2 pt." = "Reducir movimiento está activado, así que el movimiento se limita a 2 pt.";
+"Extra activity" = "Actividad extra";
+"Press a silent key (F18)" = "Pulsar una tecla silenciosa (F18)";
+"Scroll" = "Desplazamiento";
+"Scrolls one pixel and back, in the window under the pointer." = "Desplaza un píxel y vuelve, en la ventana bajo el puntero.";
+"Clicks" = "Clics";
+"Click at chosen positions" = "Hacer clic en las posiciones elegidas";
+"Choose…" = "Elegir…";
+"Clear" = "Borrar";
+"Positions: %lld" = "Posiciones: %lld";
+"Clicks are real: they press whatever is under each position. Each action clicks the next position in turn." = "Los clics son reales: pulsan lo que haya bajo cada posición. Cada acción hace clic en la siguiente posición, por turnos.";
+"Click to add positions · ⌫ removes the last · Return saves · Esc cancels" = "Haz clic para añadir posiciones · ⌫ quita la última · Return guarda · Esc cancela";
+
+/* Settings: Schedule */
+"Only run on a schedule" = "Funcionar solo en un horario";
+"Outside the scheduled hours Mouse Shaker stays paused, even when switched on." = "Fuera del horario, Mouse Shaker permanece en pausa aunque esté activado.";
+"Days" = "Días";
+"Hours" = "Horas";
+"From" = "Desde";
+"To" = "Hasta";
+"If “To” is earlier than “From”, the window runs overnight. Equal times mean all day." = "Si “Hasta” es anterior a “Desde”, la franja cruza la medianoche. Horas iguales significan todo el día.";
+"Switch on automatically when a window starts" = "Activar automáticamente cuando empiece una franja";
+
+/* Settings: Conditions */
+"App" = "App";
+"Run" = "Funcionar";
+"Choose an app" = "Elegir una app";
+"Other…" = "Otra…";
+"Pause" = "Pausa";
+"Pause while the screen is locked" = "Pausar con la pantalla bloqueada";
+"Pause while another user is logged in on screen" = "Pausar mientras otro usuario esté en pantalla";
+"Pause while a menu or the screenshot tool is open" = "Pausar con un menú o la herramienta de captura abiertos";
+"Real mouse, trackpad, scroll or keyboard input always pauses Mouse Shaker until the idle delay passes again." = "Cualquier uso real del ratón, trackpad, desplazamiento o teclado pausa Mouse Shaker hasta que vuelva a pasar la espera de inactividad.";
+"Battery" = "Batería";
+"Switch off on low battery" = "Desactivar con batería baja";
+"At or below" = "Igual o por debajo de";
+"Only applies while running on battery power." = "Solo se aplica cuando el Mac funciona con batería.";
+
+/* Settings: Shortcut */
+"Enable global shortcut" = "Activar atajo global";
+"Switch Mouse Shaker on or off" = "Activar o desactivar Mouse Shaker";
+"Reset to %@" = "Restablecer a %@";
+"Type shortcut…" = "Escribe el atajo…";
+"This shortcut is already used by another app." = "Otra app ya usa este atajo.";
+"Could not register this shortcut (error %lld)." = "No se pudo registrar este atajo (error %lld).";
+"Click the shortcut, then press the new combination. It needs at least one of ⌘, ⌃ or ⌥ (function keys work alone). Press Esc to cancel." = "Haz clic en el atajo y pulsa la nueva combinación. Necesita al menos ⌘, ⌃ u ⌥ (las teclas de función funcionan solas). Pulsa Esc para cancelar.";
