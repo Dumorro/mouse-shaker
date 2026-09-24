@@ -110,6 +110,10 @@ The system idle counters are reset by synthetic events too, so the app cannot us
 
 Mouse Shaker makes no network connections and collects no data. Its settings stay in the app's local `UserDefaults` domain.
 
+## License
+
+[MIT](LICENSE) © 2026 Thiago Dumorro
+
 ## Disclaimer
 
 Mouse Shaker is inspired by Mouse Jiggler for Mac, but it is an independent project and is not affiliated with it. Use it responsibly and in line with your organization's policies.
