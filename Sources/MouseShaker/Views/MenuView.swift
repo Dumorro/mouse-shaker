@@ -63,14 +63,10 @@ struct MenuView: View {
             Image(systemName: model.menuBarSymbol)
                 .font(.system(size: 20))
                 .frame(width: 28)
-                .foregroundStyle(model.status.isRunning ? Color.accentColor : Color.secondary)
+                .foregroundStyle(model.iconState.isRunning ? Color.accentColor : Color.secondary)
             VStack(alignment: .leading, spacing: 2) {
                 Text("Mouse Shaker").font(.headline)
-                Text(verbatim: model.statusText)
-                    .font(.caption)
-                    .foregroundStyle(.secondary)
-                    .lineLimit(2)
-                    .monospacedDigit()
+                StatusLine(live: model.live)
             }
             Spacer()
             Toggle("Active", isOn: Binding(get: { model.isEnabled }, set: { model.setEnabled($0) }))
@@ -78,6 +74,20 @@ struct MenuView: View {
                 .labelsHidden()
                 .help(model.settings.hotKeyEnabled ? model.settings.hotKey.displayString : "")
         }
+    }
+}
+
+/// The only view observing `LiveStatus`, so the per-second countdown re-renders just this line.
+private struct StatusLine: View {
+    @EnvironmentObject private var model: AppModel
+    @ObservedObject var live: LiveStatus
+
+    var body: some View {
+        Text(verbatim: model.statusText(for: live.status))
+            .font(.caption)
+            .foregroundStyle(.secondary)
+            .lineLimit(2)
+            .monospacedDigit()
     }
 }
 

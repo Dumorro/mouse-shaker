@@ -3,6 +3,17 @@ import SwiftUI
 
 enum IconState {
     case off, waiting, active, paused
+
+    init(_ status: EngineStatus) {
+        switch status {
+        case .off: self = .off
+        case .paused: self = .paused
+        case .waitingForIdle: self = .waiting
+        case .active: self = .active
+        }
+    }
+
+    var isRunning: Bool { self == .waiting || self == .active }
 }
 
 extension IconStyle {

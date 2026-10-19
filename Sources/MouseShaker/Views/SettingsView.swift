@@ -30,6 +30,7 @@ private struct Caption: View {
 private struct GeneralSettings: View {
     @EnvironmentObject private var model: AppModel
     @State private var launchAtLogin = LaunchAtLogin.isEnabled
+    @State private var needsApproval = LaunchAtLogin.needsApproval
     @State private var launchError: String?
 
     var body: some View {
@@ -40,7 +41,7 @@ private struct GeneralSettings: View {
                 Toggle("Launch at login", isOn: Binding(get: { launchAtLogin }, set: { setLaunchAtLogin($0) }))
                 if let launchError {
                     Text(verbatim: launchError).font(.caption).foregroundStyle(.red)
-                } else if LaunchAtLogin.needsApproval {
+                } else if needsApproval {
                     Caption("Approve Mouse Shaker in System Settings › General › Login Items.")
                 }
                 Toggle("Prevent sleep while active", isOn: $model.settings.preventSleep)
@@ -80,6 +81,10 @@ private struct GeneralSettings: View {
             }
         }
         .formStyle(.grouped)
+        // Back from System Settings, where the login item may have just been approved.
+        .onReceive(NotificationCenter.default.publisher(for: NSApplication.didBecomeActiveNotification)) { _ in
+            refreshLaunchAtLogin()
+        }
     }
 
     private func setLaunchAtLogin(_ on: Bool) {
@@ -89,7 +94,14 @@ private struct GeneralSettings: View {
         } catch {
             launchError = error.localizedDescription
         }
+        refreshLaunchAtLogin()
+    }
+
+    /// Each read is a synchronous XPC call to the service management daemon, so it happens here
+    /// rather than in `body`, which reruns on every settings change.
+    private func refreshLaunchAtLogin() {
         launchAtLogin = LaunchAtLogin.isEnabled
+        needsApproval = LaunchAtLogin.needsApproval
     }
 }
 

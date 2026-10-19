@@ -9,11 +9,16 @@ final class AppModel: ObservableObject {
     }
     @Published private(set) var isEnabled: Bool
     @Published private(set) var pending: PendingDeactivation?
-    @Published private(set) var status: EngineStatus = .off
+    /// Changes only on transitions. The full status, countdown included, is in `live`.
+    @Published private(set) var iconState: IconState = .off
     @Published private(set) var hasPermission = Permissions.isTrusted
     /// Why the shaker last switched itself off, shown until it is switched on again.
     @Published private(set) var autoOffNote: String?
     @Published private(set) var hotKeyError: String?
+    /// The countdown changes every tick. Published from this object, it re-rendered every view
+    /// observing the model once a second: the menu bar icon (a snapshot per display) and the
+    /// Settings window, which stays alive after closing.
+    let live = LiveStatus()
 
     private let engine = JiggleEngine()
     private let store = SettingsStore()
@@ -106,10 +111,12 @@ final class AppModel: ObservableObject {
             break
         }
 
-        if outcome.status.logKind != status.logKind {
+        if outcome.status.logKind != live.status.logKind {
             Log.engine.info("status: \(outcome.status.logKind, privacy: .public)")
         }
-        if outcome.status != status { status = outcome.status }
+        if outcome.status != live.status { live.status = outcome.status }
+        let icon = IconState(outcome.status)
+        if icon != iconState { iconState = icon }
     }
 
     // MARK: Settings
@@ -138,21 +145,17 @@ final class AppModel: ObservableObject {
 
     // MARK: Presentation
 
-    var iconState: IconState {
-        switch status {
-        case .off: .off
-        case .paused: .paused
-        case .waitingForIdle: .waiting
-        case .active: .active
-        }
-    }
-
     var menuBarSymbol: String { settings.iconStyle.symbol(for: iconState) }
 
-    var statusText: String {
+    func statusText(for status: EngineStatus) -> String {
         if !isEnabled, let autoOffNote { return autoOffNote }
         return status.text
     }
+}
+
+@MainActor
+final class LiveStatus: ObservableObject {
+    @Published fileprivate(set) var status: EngineStatus = .off
 }
 
 extension EngineStatus {
